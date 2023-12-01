@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/mic_roster.iml" filepath="$PROJECT_DIR$/mic_roster.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MicRosterScraper.iml" filepath="$PROJECT_DIR$/MicRosterScraper.iml" />
     </modules>
   </component>
 </project>

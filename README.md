@@ -1,7 +1,7 @@
 # Mic Roster Web Scraper
 
 ## Project Description
-The Mic Roster Web Scraper is a Python module designed to automate the task of logging into the Mic Roster website and extracting shift information. It utilizes the \`requests\` and \`BeautifulSoup\` libraries to interact with web pages, parse HTML content, and extract essential data. This tool is particularly useful for employees or administrators needing regular access to shift schedules on the Mic Roster platform.
+The Mic Roster Web Scraper is a Python module designed to automate the task of logging into the Mic Roster website and extracting shift information. It utilizes the `requests` and `BeautifulSoup4` libraries to interact with web pages, parse HTML content, and extract essential data. This tool is particularly useful for employees or administrators needing regular access to shift schedules on the Mic Roster platform.
 
 ## Features
 - **Automated Login**: Automatically logs into the Mic Roster website using provided credentials.
