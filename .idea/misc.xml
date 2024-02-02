@@ -3,7 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.11 (mic_roster)" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="Python 3.11 (MicRosterScraper)" project-jdk-type="Python SDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="tfnsw" project-jdk-type="Python SDK" />
 </project>
