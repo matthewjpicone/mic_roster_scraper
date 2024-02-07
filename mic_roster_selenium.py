@@ -27,21 +27,35 @@ Author: matthewpicone
 Date: 1/12/2023
 """
 import time
-
 import requests
 from bs4 import BeautifulSoup
 import credentials as cr
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options  # Import for Chrome options
 
 login_url = 'https://ess.tmc.tambla.net/Microster.SelfService/Default.aspx'
 roster_url = 'https://ess.tmc.tambla.net/Microster.SelfService/MyRoster2.aspx'
 
 session = requests.Session()
-driver = webdriver.Chrome(executable_path='./chromedriver')
+
+# Configure Chrome to run in headless mode
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Ensure Chrome runs headless
+chrome_options.add_argument("--no-sandbox")  # Bypass OS security model, REQUIRED for Docker and some Linux environments
+chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+chrome_options.add_argument('--disable-gpu')  # Required for some versions of Chrome to run headless
+chrome_options.add_argument('start-maximized')
+chrome_options.add_argument('disable-infobars')
+chrome_options.add_argument('--disable-extensions')
+
+# Initialize the Chrome driver with options
+driver = webdriver.Chrome(executable_path='./chromedriver', options=chrome_options)
+
+# The rest of your script remains the same...
+
 
 
 def make_soup(response):
@@ -173,39 +187,20 @@ def main():
     None
     """
     process_response_cal(login(login_url))
+    # <a id="ctl00_ContentPlaceHolder1_calendar_lnkPreviousMonth" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$calendar$lnkPreviousMonth','')">January 2024</a>
     time.sleep(1)
-    input()
+    # input()
     process_response_cal(fetch_next_page_html("ctl00_ContentPlaceHolder1_calendar_lnkNextMonth"))
-    time.sleep(1)
+    time.sleep(2)
     for i in range(24):
         process_response_cal(fetch_next_page_html("ctl00_ContentPlaceHolder1_calendar_lnkPreviousMonth"))
-        time.sleep(1)
+        time.sleep(2)
 
     driver.quit()
 
-    # headers = {
-    #     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    #     "Accept-Encoding": "gzip, deflate, br",
-    #     "Accept-Language": "en-AU,en;q=0.9",
-    #     "Connection": "keep-alive",
-    #     "Host": "ess.tmc.tambla.net",
-    #     "Referer": "https://ess.tmc.tambla.net/Microster.SelfService/MyRoster2.aspx",
-    #     "Sec-Fetch-Dest": "document",
-    #     "Sec-Fetch-Mode": "navigate",
-    #     "Sec-Fetch-Site": "same-origin",
-    #     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) "
-    #                   "Version/17.1 Safari/605.1.15"
-    # }
-    #
-    # response = session.get(roster_url, headers=headers)
-    # if response.status_code == 200:
-    #     print("Request was successful.")
-    #     process_response_cal(response)
-    # else:
-    #     print(f"Failed to retrieve data with status code: {response.status_code}")
-    # time.sleep(5)
-    # print(fetch_next_page_html())
+
 
 
 if __name__ == '__main__':
     main()
+
