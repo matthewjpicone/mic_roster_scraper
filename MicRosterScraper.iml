@@ -6,4 +6,7 @@
     <orderEntry type="jdk" jdkName="tfnsw" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PackageRequirementsSettings">
+    <option name="modifyBaseFiles" value="true" />
+  </component>
 </module>

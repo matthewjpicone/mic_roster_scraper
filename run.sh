@@ -1,0 +1,1 @@
+/Users/matthewpicone/anaconda3/envs/tfnsw/bin/python /Users/matthewpicone/Developer/mic_roster_scraper/mic_roster_selenium.py
